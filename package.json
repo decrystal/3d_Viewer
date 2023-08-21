@@ -56,10 +56,17 @@
 		"build_engine_module": "npm run update_engine_exports && rollup --config tools/rollup.js && tsc --project tools/tsconfig.json",
 		"build_website_dev": "esbuild source/website/index.js --bundle --minify --global-name=OV --sourcemap --loader:.ttf=file --loader:.woff=file --loader:.svg=file --outfile=build/website_dev/o3dv.website.min.js",
 		"build_website": "esbuild source/website/index.js --bundle --minify --global-name=OV --loader:.ttf=file --loader:.woff=file --loader:.svg=file --outfile=build/website/o3dv.website.min.js",
-		"update_engine_exports": "run-python3 tools/update_engine_exports.py"
+		"update_engine_exports": "run-python3 tools/update_engine_exports.py",
+		"watch": "nodemon --watch source -e js --exec 'npm run build_website_dev && browser-sync reload'",
+		"serve": "browser-sync start --proxy 'localhost:8080' --files './build/website_dev/' --no-open",
+		"hot": "npm run watch && npm run serve",
+		"start_webpack": "webpack-dev-server --open",
+		"build_website_debug": "esbuild debug/source/website/index.js --bundle --minify --global-name=OV --sourcemap --loader:.ttf=file --loader:.woff=file --loader:.svg=file --outfile=build/website_debug/o3dv.website.min.js",
+		"watch_debug": "nodemon --watch debug -e js --exec 'npm run build_website_debug'"
 	},
 	"devDependencies": {
 		"@types/node": "^20.1.0",
+		"browser-sync": "^2.29.3",
 		"esbuild": "^0.18.0",
 		"eslint": "^8.29.0",
 		"eslint-plugin-unused-imports": "^3.0.0",
@@ -67,11 +74,15 @@
 		"http-server": "^14.0.0",
 		"jsdoc": "^4.0.0",
 		"mocha": "^10.2.0",
+		"nodemon": "^3.0.1",
 		"oslllo-svg-fixer": "^2.2.0",
 		"rollup": "^3.9.1",
 		"run-python3": "^0.0.5",
 		"svgo": "^3.0.2",
-		"typescript": "^5.0.4"
+		"typescript": "^5.0.4",
+		"webpack": "^5.88.2",
+		"webpack-cli": "^5.1.4",
+		"webpack-dev-server": "^4.15.1"
 	},
 	"dependencies": {
 		"@simonwep/pickr": "1.8.2",
@@ -79,6 +90,7 @@
 		"fflate": "0.8.0",
 		"occt-import-js": "0.0.21",
 		"rhino3dm": "7.15.0",
+		"systemjs": "^6.14.2",
 		"three": "0.154.0",
 		"web-ifc": "0.0.39"
 	},
