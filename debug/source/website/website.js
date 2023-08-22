@@ -1,7 +1,8 @@
 import { InputFilesFromFileObjects, InputFilesFromUrls } from '../engine/import/importerfiles.js';
-import { ImportErrorCode, ImportSettings } from '../engine/import/importer.js';
+import { ImportErrorCode, ImportSettings } from '../../../build/engine/o3dv.module';
 import { Viewer } from '../engine/viewer/viewer.js';
-import { AddDiv, AddDomElement, ShowDomElement, SetDomElementOuterHeight, CreateDomElement, GetDomElementOuterWidth, GetDomElementOuterHeight } from '../engine/viewer/domutils.js';
+import { AddDiv, AddDomElement, ShowDomElement, SetDomElementOuterHeight, CreateDomElement, GetDomElementOuterWidth, GetDomElementOuterHeight } from '../../../test/engine/o3dv.module.js';
+
 import { CalculatePopupPositionToScreen, ShowListPopup } from './dialogs.js';
 import { HandleEvent } from './eventhandler.js';
 import { Settings, Theme } from './settings.js';

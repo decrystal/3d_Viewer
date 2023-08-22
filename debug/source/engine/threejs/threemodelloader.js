@@ -108,8 +108,10 @@ export class ThreeModelLoader
                     onModelLoaded : (threeObject) => {
                         this.defaultMaterial = output.defaultMaterial;
                         this.objectUrls = output.objectUrls;
+
+                        // 设置3d 模型的初始位置；
                         if (importResult.upVector === Direction.X) {
-                            let rotation = new THREE.Quaternion ().setFromAxisAngle (new THREE.Vector3 (0.0, 0.0, 1.0), Math.PI / 2.0);
+                            let rotation = new THREE.Quaternion ().setFromAxisAngle (new THREE.Vector3 (0.0, 1.0, 1.0), Math.PI / 2.0);
                             threeObject.quaternion.multiply (rotation);
                         } else if (importResult.upVector === Direction.Z) {
                             let rotation = new THREE.Quaternion ().setFromAxisAngle (new THREE.Vector3 (1.0, 0.0, 0.0), -Math.PI / 2.0);
